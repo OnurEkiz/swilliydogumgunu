@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sana Özel Bir Sürpriz 🌸</title>
+    <style>
+        /* MOR ÇİÇEKLERLE UYUMLU YUMUŞAK PASTEL LAVANTA ARKA PLANI */
+        body {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e8eaf6 100%);
+            margin: 0;
+            padding: 20px;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .ana-tasayici {
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        /* Sayfa geçiş animasyonu */
+        .ekran {
+            display: none;
+            animation: yumusakGecis 0.5s ease-in-out forwards;
+        }
+
+        .ekran.aktif {
+            display: block;
+        }
+
+        @keyframes yumusakGecis {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Estetik Üst Başlık Alanı */
+        .ust-baslik-alani {
+            margin-bottom: 40px;
+        }
+
+        .ust-baslik-alani h1 {
+            color: #4a148c; 
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .ust-baslik-alani p {
+            color: #78909c;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Kusursuz Flexbox kutu düzeni */
+        .kutu-konteyner {
+            display: flex;
+            justify-content: center; 
+            gap: 60px;              
+            margin-top: 50px;
+            margin-bottom: 30px;       
+        }
+
+        .kutu-konteyner img {
+            width: 180px;
+            height: 180px;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+            cursor: pointer;
+            filter: drop-shadow(0 8px 16px rgba(74, 20, 140, 0.1));
+        }
+
+        .kutu-konteyner img:hover {
+            transform: translate(-10px, -15px) scale(1.15); 
+            filter: drop-shadow(0 15px 30px rgba(74, 20, 140, 0.2)) brightness(1.03);
+        }
+
+        .alt-sus-notu {
+            font-size: 14px;
+            color: #90a4ae;
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        /* ÇİÇEKLİ MEKTUP KAĞIDI JPG DÜZENLEMESİ */
+        .cicekli-mektup-karti {
+            width: 100%;
+            max-width: 580px;
+            min-height: 820px; 
+            background-image: url('resimler/mektup-arka-plan.png');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            /* DİKKAT: Yazının ilk satıra oturması için buradaki 82px değerini değiştirebilirsiniz */
+            padding: 82px 65px 85px 65px; 
+            margin: 20px auto;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(74, 20, 140, 0.12);
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        /* SATIRLARIN ÇİZGİLERE TAM OTURMASINI SAĞLAYAN ALAN */
+        .mektup-yazi-alani {
+            color: #3b2f4a; 
+            font-family: 'Georgia', serif;
+            font-size: 14.5px;
+            
+            /* DİKKAT: Satır aralıklarını açıp daraltmak için burayı (örneğin 23px veya 24px) yapabilirsiniz */
+            line-height: 22.3px; 
+            font-weight: 600;
+        }
+
+        .mektup-yazi-alani p {
+            /* DİKKAT: Buradaki değer her zaman yukarıdaki line-height değeri ile birebir AYNI olmalıdır */
+            margin: 0 0 22.3px 0;
+            text-indent: 20px;
+            text-align: justify;
+        }
+
+        /* İYİ Kİ DOĞDUN YAZISI SAĞ ALT KÖŞEYE HİZALANDI */
+        .mektup-kapanis {
+            text-align: right;
+            font-style: italic;
+            color: #7b4f9d;
+            font-weight: bold;
+            margin-top: 40px;
+            display: block;
+            width: 100%;
+        }
+
+        /* Estetik Geri Dön Butonu */
+        .geri-btn {
+            background-color: #FFF;
+            color: #7b4f9d;
+            border: 2px solid #e1bee7;
+            padding: 12px 28px;
+            font-size: 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .geri-btn:hover {
+            background-color: #7b4f9d;
+            color: #FFF;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(74, 20, 140, 0.15);
+        }
+    </style>
+</head>
+<body>
+
+<div class="ana-tasayici">
+
+    <!-- EKRAN 0: ANA SAYFA (3 HEDİYE KUTUSU) -->
+    <div class="ekran aktif" id="ekranAnaSayfa">
+        <div class="ust-baslik-alani">
+            <h1>Senin İçin 3 Sürpriz Kutum Var! 🎁</h1>
+            <p>İstediğin kutuya tıklayarak sürprizleri keşfedebilirsin...</p>
+        </div>
+        
+        <div class="kutu-konteyner">
+            <img id="kutu1" src="resimler/kkapali.png" onclick="kutuyuAcAç('kutu1', 'ekranCicek')" alt="1. Kutu">
+            <img id="kutu2" src="resimler/kkapali.png" onclick="kutuyuAcAç('kutu2', 'ekranMuzik')" alt="2. Kutu">
+            <img id="kutu3" src="resimler/kkapali.png" onclick="kutuyuAcAç('kutu3', 'ekranMektup')" alt="3. Kutu">
+        </div>
+
+        <div class="alt-sus-notu">Her kutuda sana ait küçük birer parça saklı... ✨</div>
+    </div>
+
+    <!-- EKRAN 1: ÇİÇEKLER VE SÖZLER -->
+    <div class="ekran" id="ekranCicek">
+        <div class="ust-baslik-alani">
+            <h2>Anı Çiçekliği 🌷</h2>
+            <p>Burası çiçeklerle süslenmiş güzel sözler alanı olacak.</p>
+        </div>
+        <button class="geri-btn" onclick="anaSayfayaDon()">↩ Kutulara Geri Dön</button>
+    </div>
+
+    <!-- EKRAN 2: MÜZİK/KASET SAYFASI -->
+    <div class="ekran" id="ekranMuzik">
+        <div class="ust-baslik-alani">
+            <h2>Bizim Kasetimiz 🎵</h2>
+            <p>Burası şarkımızın çalacağı nostaljik müzik alanı olacak.</p>
+        </div>
+        <button class="geri-btn" onclick="anaSayfayaDon()">↩ Kutulara Geri Dön</button>
+    </div>
+
+    <!-- EKRAN 3: DOĞUM GÜNÜ MEKTUBU -->
+    <div class="ekran" id="ekranMektup">
+        <div class="ust-baslik-alani">
+            <h2>Kalbimden Gelen Mektup ✍️</h2>
+        </div>
+        
+        <div class="cicekli-mektup-karti">
+            <div class="mektup-yazi-alani">
+                <p>
+                    Bir bahar günü girdin hayatıma sevgilim. Sanki kalbimde hep sana ayrılmış bir yer varmış da sen yalnızca oraya dönmüşsün gibi, hiç yabancılık çekmeden yerleştin kalbimin tam ortasına. O güzel gülümsemenle buz tutmuş yanlarımı ısıttın. Sen kalbime yalnızca baharı getirmedin güzelim, sen baharın ta kendisiydin. Seninle içimde çiçekler açtı, yeniden filizlendim. İyi ki geldin hayatıma, iyi ki seni tanımışım.
+                </p>
+                <p>
+                    Sen hayatıma girdikten sonra yalnızca kalbim değil, dünyaya bakışım da değişti. Hayatıma neşe, ruhuma huzur kattın. Bazen küçücük bir gülüşün, sesini duymak ya da gözlerine bakmak bile bütün günümü güzelleştirmeye yetiyor. Seninle yaşadığım her duyguyu, hissettiğim her şeyi, bana yaşattığın her heyecanı ayrı ayrı seviyorum. Çünkü senin yanındayken en sıradan anlar bile benim için çok özel oluyor. Sen bana yalnızca sevmeyi değil, sevildiğinde insanın nasıl güzelleştiğini de hissettirdin. Seninle birlikte kalbim, uzun zamandır aradığı huzuru buldu.
+                </p>
+                <p>
+                    Seninle anladım ki mutluluk, her şeyin kusursuz olması değil; hayatın bütün güzelliklerini ve zorluklarını senin gibi biriyle karşılayabilmekmiş. Ben seninle sadece güzel günleri değil, hayatın her hâlini paylaşmak istiyorum. Sen benim en güzel baharım, bu hayatta başıma gelen en güzel şey oldun. İyi ki varsın balım, iyi ki hayatıma girdin, iyi ki kalbim seni bulmuş.
+                </p>
+                
+                <span class="mektup-kapanis">
+                    İyi ki Doğdun! ❤️
+                </span>
+            </div>
+        </div>
+
+        <button class="geri-btn" onclick="anaSayfayaDon()">↩ Kutulara Geri Dön</button>
+    </div>
+
+</div>
+
+<script>
+    function kutuAciveGit(kutuId, hedefEkranId) {
+        kutuyuAcAç(kutuId, hedefEkranId);
+    }
+
+    function kutuyuAcAç(kutuId, hedefEkranId) {
+        const kutuResmi = document.getElementById(kutuId);
+        kutuResmi.setAttribute("src", "resimler/kacik.png");
+
+        setTimeout(function() {
+            document.querySelectorAll('.ekran').forEach(ekran => {
+                ekran.classList.remove('aktif');
+            });
+            document.getElementById(hedefEkranId).classList.add('aktif');
+        }, 700);
+    }
+
+    function anaSayfayaDon() {
+        const k1 = document.getElementById("kutu1");
+        const k2 = document.getElementById("kutu2");
+        const k3 = document.getElementById("kutu3");
+        
+        if (k1) k1.setAttribute("src", "resimler/kkapali.png");
+        if (k2) k2.setAttribute("src", "resimler/kkapali.png");
+        if (k3) k3.setAttribute("src", "resimler/kkapali.png");
+
+        document.querySelectorAll('.ekran').forEach(ekran => {
+            ekran.classList.remove('aktif');
+        });
+        document.getElementById('ekranAnaSayfa').classList.add('aktif');
+    }
+</script>
+
+</body>
+</html>
