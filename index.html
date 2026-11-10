@@ -5,256 +5,360 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sana Özel Bir Sürpriz 🌸</title>
     <style>
-        /* MOR ÇİÇEKLERLE UYUMLU YUMUŞAK PASTEL LAVANTA ARKA PLANI */
         body {
             background: linear-gradient(135deg, #f3e5f5 0%, #e8eaf6 100%);
-            margin: 0;
-            padding: 20px;
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            margin: 0; padding: 20px; font-family: sans-serif;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+            position: relative;
+            overflow-x: hidden; /* Sticker'ların ekrandan taşmasını önler */
+        }
+        .ana-tasayici { width: 100%; max-width: 1000px; text-align: center; position: relative; z-index: 10; }
+        .ekran { display: none; animation: yumusakGecis 0.5s ease-in-out forwards; }
+        .ekran.aktif { display: block; }
+        @keyframes yumusakGecis { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+        .ust-baslik-alani { margin-bottom: 40px; }
+        .ust-baslik-alani h1 { color: #4a148c; font-size: 36px; margin-bottom: 10px; }
+        .ust-baslik-alani p { color: #78909c; font-size: 16px; }
+        .kutu-konteyner { display: flex; justify-content: center; gap: 60px; margin-top: 80px; }
+        .kutu-konteyner img { width: 180px; height: 180px; transition: transform 0.4s ease, filter 0.4s ease; cursor: pointer; filter: drop-shadow(0 8px 16px rgba(74, 20, 140, 0.1)); }
+        .kutu-konteyner img:hover { transform: translate(-10px, -15px) scale(1.15); filter: drop-shadow(0 15px 30px rgba(74, 20, 140, 0.2)); }
+        
+        .cicekli-mektup-karti { 
+            width: 100%; 
+            max-width: 780px; 
+            min-height: 1100px; 
+            height: auto; 
+            background-image: url('resimler/mektup-arka-plan.png'); 
+            background-size: 100% 100%; 
+            padding: 95px 105px 95px 105px; 
+            margin: 20px auto; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            text-align: left; 
+            box-sizing: border-box; 
+        }
+        
+        .mektup-yazi-alani { color: #3b2f4a; font-family: 'Georgia', serif; font-size: 14.5px; line-height: 22.3px; font-weight: 600; }
+        .mektup-yazi-alani p { margin: 0 0 22.3px 0; text-indent: 20px; text-align: justify; }
+        .mektup-kapanis { text-align: right; font-style: italic; color: #7b4f9d; font-weight: bold; margin-top: 40px; display: block; width: 100%; }
+        .geri-btn { background-color: #FFF; color: #7b4f9d; border: 2px solid #e1bee7; padding: 12px 28px; font-size: 15px; border-radius: 30px; cursor: pointer; font-weight: bold; margin-top: 30px; }
+        .geri-btn:hover { background-color: #7b4f9d; color: #FFF; transform: translateY(-3px); }
+
+        /* ======================================================= */
+        /* ✨ STICKER DOSYA YOLLARI VE YENİ BUKETİN KONUMU         */
+        /* ======================================================= */
+        .sticker {
+            position: absolute;
+            pointer-events: none; 
+            z-index: 1; 
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.1)); 
+            opacity: 0.9; 
+        }
+        .st-freesia { width: 140px; top: 50%; right: 4%; transform: translateY(-50%) rotate(-12deg); }
+
+        .st-buket { width: 140px; top: 50%; left: 4%; transform: translateY(-50%) rotate(15deg); }
+        /* Sol Üst - Papatya Buketi */
+        .st-papatya { width: 140px; top: 8%; left: 4%; transform: rotate(-12deg); }
+
+        /* Sağ Üst - Lale Buketi */
+        .st-lale { width: 140px; top: 6%; right: 4%; transform: rotate(15deg); }
+
+        /* Sol Alt - Şakayık Çiçekleri */
+        .st-sakayik { width: 140px; bottom: 8%; left: 3%; transform: rotate(8deg); }
+
+        /* Sağ Alt Alan - Yeni Eklenen Büyük Kurdeleli Buket */
+        .st-buyuk-buket {
+            width: 180px; /* Diğerlerinden biraz daha belirgin ve büyük durması için */
+            bottom: 6%;
+            right: 3%;
+            transform: rotate(-10deg);
         }
 
-        .ana-tasayici {
-            width: 100%;
-            max-width: 1000px;
-            text-align: center;
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .ust-baslik-alani h1 { font-size: 24px; }
+            .kutu-konteyner { gap: 15px; margin-top: 40px; }
+            .kutu-konteyner img { width: 100px; height: 100px; }
+            .cicekli-mektup-karti { padding: 60px 25px 60px 25px; min-height: auto; background-size: cover; }
+            .mektup-yazi-alani { font-size: 13.5px; line-height: 20px; }
+            .mektup-yazi-alani p { margin: 0 0 15px 0; }
+            .sticker { display: none; } /* Mobilde gizleme ayarı korundu */
         }
 
-        /* Sayfa geçiş animasyonu */
-        .ekran {
-            display: none;
-            animation: yumusakGecis 0.5s ease-in-out forwards;
-        }
+/* ======================================================= */
+/* 🌌 GÜNCELLENEN TÜM SIFIRLANMIŞ UZAY VE YILDIZ STİLLERİ  */
+/* ======================================================= */
 
-        .ekran.aktif {
-            display: block;
-        }
+body {
+    transition: background 0.5s ease-in-out;
+}
 
-        @keyframes yumusakGecis {
-            from { opacity: 0; transform: scale(0.96); }
-            to { opacity: 1; transform: scale(1); }
-        }
+/* 2. KUTU AÇILDIĞINDA ARKA PLANIN DERİN UZAY BOŞLUĞU GİBİ KAPKARANLIK OLMASINI SAĞLAR */
+body.uzay-modu {
+    background: radial-gradient(circle at center, #0f0826 0%, #050212 100%) !important;
+}
 
-        /* Estetik Üst Başlık Alanı */
-        .ust-baslik-alani {
-            margin-bottom: 40px;
-        }
+/* UZAY MODUNDA TÜM ÇIÇEK STICKER'LARINI OTOMATİK GİZLER */
+body.uzay-modu .sticker { 
+    opacity: 0 !important; 
+    visibility: hidden; 
+}
 
-        .ust-baslik-alani h1 {
-            color: #4a148c; 
-            font-size: 36px;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
+.uzay-modu .ust-baslik-alani h2 { 
+    color: #f3e5f5; 
+    text-shadow: 0 0 15px rgba(255,255,255,0.4); 
+    font-size: 32px; 
+}
 
-        .ust-baslik-alani p {
-            color: #78909c;
-            font-size: 16px;
-            font-weight: 500;
-        }
+.uzay-konsept-kapsayici { 
+    max-width: 600px; 
+    margin: 10px auto; 
+    padding: 10px; 
+    text-align: center; 
+    position: relative;
+}
 
-        /* Kusursuz Flexbox kutu düzeni */
-        .kutu-konteyner {
-            display: flex;
-            justify-content: center; 
-            gap: 60px;              
-            margin-top: 50px;
-            margin-bottom: 30px;       
-        }
+/* Fotoğrafın 1:1 kare yapısını en net ve dairesel asaletle korur */
+.gercek-harita-img { 
+    width: 480px; 
+    height: 480px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin-bottom: 35px;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.12), 0 0 60px rgba(74, 20, 140, 0.25);
+    display: inline-block;
+    position: relative;
+    z-index: 15;
+}
 
-        .kutu-konteyner img {
-            width: 180px;
-            height: 180px;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
-            cursor: pointer;
-            filter: drop-shadow(0 8px 16px rgba(74, 20, 140, 0.1));
-        }
+/* 🎯 TÜM EKRANA DAĞILACAK DİNAMİK CANLI YILDIZLARIN STİLİ */
+.dinamik-yildiz { 
+    position: fixed; 
+    width: 4px; 
+    height: 4px; 
+    background: white; 
+    border-radius: 50%; 
+    box-shadow: 0 0 8px #fff, 0 0 12px #fff; 
+    z-index: 1; 
+    pointer-events: none;
+    animation: yildizGlow 2s infinite alternate ease-in-out; 
+    opacity: 0; 
+    transition: opacity 0.5s ease;
+}
 
-        .kutu-konteyner img:hover {
-            transform: translate(-10px, -15px) scale(1.15); 
-            filter: drop-shadow(0 15px 30px rgba(74, 20, 140, 0.2)) brightness(1.03);
-        }
+@keyframes yildizGlow { 
+    0% { opacity: 0.1; transform: scale(0.7); } 
+    100% { opacity: 1; transform: scale(1.3); } 
+}
 
-        .alt-sus-notu {
-            font-size: 14px;
-            color: #90a4ae;
-            margin-top: 40px;
-            font-style: italic;
-        }
+.uzay-yazi {
+    font-family: 'Georgia', serif; 
+    font-size: 17px; 
+    color: #ffffff;
+    line-height: 28px; 
+    font-style: italic; 
+    max-width: 520px; 
+    margin: 0 auto;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+    position: relative;
+    z-index: 15;
+}
 
-        /* ÇİÇEKLİ MEKTUP KAĞIDI JPG DÜZENLEMESİ */
-        .cicekli-mektup-karti {
-            width: 100%;
-            max-width: 580px;
-            min-height: 820px; 
-            background-image: url('resimler/mektup-arka-plan.png');
-            background-size: 100% 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            
-            /* DİKKAT: Yazının ilk satıra oturması için buradaki 82px değerini değiştirebilirsiniz */
-            padding: 82px 65px 85px 65px; 
-            margin: 20px auto;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(74, 20, 140, 0.12);
-            text-align: left;
-            box-sizing: border-box;
-        }
+.uzay-btn { 
+    background-color: #4a148c; 
+    color: #fff; 
+    border: 1px solid #8e24aa; 
+    box-shadow: 0 4px 15px rgba(142, 36, 170, 0.4); 
+    position: relative;
+    z-index: 20;
+}
 
-        /* SATIRLARIN ÇİZGİLERE TAM OTURMASINI SAĞLAYAN ALAN */
-        .mektup-yazi-alani {
-            color: #3b2f4a; 
-            font-family: 'Georgia', serif;
-            font-size: 14.5px;
-            
-            /* DİKKAT: Satır aralıklarını açıp daraltmak için burayı (örneğin 23px veya 24px) yapabilirsiniz */
-            line-height: 22.3px; 
-            font-weight: 600;
-        }
+.uzay-btn:hover { 
+    background-color: #8e24aa; 
+}
 
-        .mektup-yazi-alani p {
-            /* DİKKAT: Buradaki değer her zaman yukarıdaki line-height değeri ile birebir AYNI olmalıdır */
-            margin: 0 0 22.3px 0;
-            text-indent: 20px;
-            text-align: justify;
-        }
+@media (max-width: 768px) {
+    .gercek-harita-img {
+        width: 300px;
+        height: 300px;
+    }
+}
 
-        /* İYİ Kİ DOĞDUN YAZISI SAĞ ALT KÖŞEYE HİZALANDI */
-        .mektup-kapanis {
-            text-align: right;
-            font-style: italic;
-            color: #7b4f9d;
-            font-weight: bold;
-            margin-top: 40px;
-            display: block;
-            width: 100%;
-        }
 
-        /* Estetik Geri Dön Butonu */
-        .geri-btn {
-            background-color: #FFF;
-            color: #7b4f9d;
-            border: 2px solid #e1bee7;
-            padding: 12px 28px;
-            font-size: 15px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin-top: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
 
-        .geri-btn:hover {
-            background-color: #7b4f9d;
-            color: #FFF;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(74, 20, 140, 0.15);
-        }
     </style>
 </head>
 <body>
 
+    <!-- Projenizdeki yerel sticker görselleri -->
+    <img class="sticker st-papatya" src="resimler/papatya.png" alt="sticker">
+    <img class="sticker st-lale" src="resimler/lale.png" alt="sticker">
+    <img class="sticker st-sakayik" src="resimler/sakayik.png" alt="sticker">
+    <img class="sticker st-buyuk-buket" src="resimler/buyuk-buket.png" alt="sticker">
+    <img class="sticker st-buket" src="resimler/buket.png" alt="sticker">
+    <img class="sticker st-freesia" src="resimler/freesia.png" alt="sticker">
 <div class="ana-tasayici">
-
-    <!-- EKRAN 0: ANA SAYFA (3 HEDİYE KUTUSU) -->
+    <!-- ANA SAYFA -->
     <div class="ekran aktif" id="ekranAnaSayfa">
         <div class="ust-baslik-alani">
             <h1>Senin İçin 3 Sürpriz Kutum Var! 🎁</h1>
             <p>İstediğin kutuya tıklayarak sürprizleri keşfedebilirsin...</p>
         </div>
-        
         <div class="kutu-konteyner">
-            <img id="kutu1" src="resimler/kkapali.png" onclick="kutuyuAcAç('kutu1', 'ekranCicek')" alt="1. Kutu">
-            <img id="kutu2" src="resimler/kkapali.png" onclick="kutuyuAcAç('kutu2', 'ekranMuzik')" alt="2. Kutu">
-            <img id="kutu3" src="resimler/kkapali.png" onclick="kutuyuAcAç('kutu3', 'ekranMektup')" alt="3. Kutu">
+            <img id="kutu1" src="resimler/kkapali.png" onclick="kutuAc('kutu1', 'ekranCicek')" alt="1">
+            <img id="kutu2" src="resimler/kkapali.png" onclick="kutuAc('kutu2', 'ekranMuzik')" alt="2">
+            <img id="kutu3" src="resimler/kkapali.png" onclick="kutuAc('kutu3', 'ekranMektup')" alt="3">
         </div>
-
-        <div class="alt-sus-notu">Her kutuda sana ait küçük birer parça saklı... ✨</div>
     </div>
 
-    <!-- EKRAN 1: ÇİÇEKLER VE SÖZLER -->
+    <!-- EKRAN 1 -->
     <div class="ekran" id="ekranCicek">
-        <div class="ust-baslik-alani">
-            <h2>Anı Çiçekliği 🌷</h2>
-            <p>Burası çiçeklerle süslenmiş güzel sözler alanı olacak.</p>
-        </div>
-        <button class="geri-btn" onclick="anaSayfayaDon()">↩ Kutulara Geri Dön</button>
+        <h2>Anı Çiçekliği 🌷</h2>
+        <button class="geri-btn" onclick="anaSayfayaDon()">↩ Geri Dön</button>
     </div>
 
-    <!-- EKRAN 2: MÜZİK/KASET SAYFASI -->
-    <div class="ekran" id="ekranMuzik">
-        <div class="ust-baslik-alani">
-            <h2>Bizim Kasetimiz 🎵</h2>
-            <p>Burası şarkımızın çalacağı nostaljik müzik alanı olacak.</p>
-        </div>
-        <button class="geri-btn" onclick="anaSayfayaDon()">↩ Kutulara Geri Dön</button>
-    </div>
+<!-- EKRAN 2: GERÇEK YILDIZ HARİTASI (TÜM SAYFAYI KAPLAYAN EVREN) -->
+<div class="ekran" id="ekranMuzik">
 
-    <!-- EKRAN 3: DOĞUM GÜNÜ MEKTUBU -->
-    <div class="ekran" id="ekranMektup">
-        <div class="ust-baslik-alani">
-            <h2>Kalbimden Gelen Mektup ✍️</h2>
-        </div>
+    
+    <div class="uzay-konsept-kapsayici">
+        <!-- Fotoğraf pürüzsüz ve en net haliyle yerleştirildi -->
+        <img class="gercek-harita-img" src="resimler/yildiz-haritasi.png" alt="Yıldız Haritası">
         
-        <div class="cicekli-mektup-karti">
-            <div class="mektup-yazi-alani">
-                <p>
-                    Bir bahar günü girdin hayatıma sevgilim. Sanki kalbimde hep sana ayrılmış bir yer varmış da sen yalnızca oraya dönmüşsün gibi, hiç yabancılık çekmeden yerleştin kalbimin tam ortasına. O güzel gülümsemenle buz tutmuş yanlarımı ısıttın. Sen kalbime yalnızca baharı getirmedin güzelim, sen baharın ta kendisiydin. Seninle içimde çiçekler açtı, yeniden filizlendim. İyi ki geldin hayatıma, iyi ki seni tanımışım.
-                </p>
-                <p>
-                    Sen hayatıma girdikten sonra yalnızca kalbim değil, dünyaya bakışım da değişti. Hayatıma neşe, ruhuma huzur kattın. Bazen küçücük bir gülüşün, sesini duymak ya da gözlerine bakmak bile bütün günümü güzelleştirmeye yetiyor. Seninle yaşadığım her duyguyu, hissettiğim her şeyi, bana yaşattığın her heyecanı ayrı ayrı seviyorum. Çünkü senin yanındayken en sıradan anlar bile benim için çok özel oluyor. Sen bana yalnızca sevmeyi değil, sevildiğinde insanın nasıl güzelleştiğini de hissettirdin. Seninle birlikte kalbim, uzun zamandır aradığı huzuru buldu.
-                </p>
-                <p>
-                    Seninle anladım ki mutluluk, her şeyin kusursuz olması değil; hayatın bütün güzelliklerini ve zorluklarını senin gibi biriyle karşılayabilmekmiş. Ben seninle sadece güzel günleri değil, hayatın her hâlini paylaşmak istiyorum. Sen benim en güzel baharım, bu hayatta başıma gelen en güzel şey oldun. İyi ki varsın balım, iyi ki hayatıma girdin, iyi ki kalbim seni bulmuş.
-                </p>
-                
-                <span class="mektup-kapanis">
-                    İyi ki Doğdun! ❤️
-                </span>
-            </div>
+        <div class="uzay-yazi">
+            "Sen doğduğun an, gökyüzündeki takım yıldızları tam olarak bu şekilde dizilmişti sevgilim... 🌌<br><br>
+            O gece dünya en parlak yıldızına kavuştu. İyi ki doğdun! 🌟"
         </div>
-
-        <button class="geri-btn" onclick="anaSayfayaDon()">↩ Kutulara Geri Dön</button>
     </div>
+    <button class="geri-btn uzay-btn" onclick="anaSayfayaDon()">↩ Kutulara Geri Dön</button>
+</div>
 
+
+
+
+
+
+
+    <!-- EKRAN 3 -->
+    <div class="ekran" id="ekranMektup">
+        <div class="cicekli-mektup-karti">
+            <div class="mektup-yazi-alani" id="dinamikMektupAlani"></div>
+            <span class="mektup-kapanis">Seni çok seviyorum. ❤️</span>
+        </div>
+        <button class="geri-btn" onclick="anaSayfayaDon()">↩ Geri Dön</button>
+    </div>
 </div>
 
 <script>
-    function kutuAciveGit(kutuId, hedefEkranId) {
-        kutuyuAcAç(kutuId, hedefEkranId);
-    }
+    const mektupMetni = [
+        "Bir bahar günü girdin hayatıma sevgilim. Sanki kalbimde hep sana ayrılmış bir yer varmış da sen yalnızca oraya dönmüşsün gibi, hiç yabancılık çekmeden yerleştin kalbimin tam ortasına. O güzel gülümsemenle buz tutmuş yanlarımı ısıttın. Sen kalbime yalnızca baharı getirmedin güzelim, sen baharın ta kendisiydin. Seninle içimde çiçekler açtı, yeniden filizlendim. İyi ki geldin hayatıma, iyi ki seni tanımışım.",
+        "Sen hayatıma girdikten sonra yalnızca kalbim değil, dünyaya bakışım da değişti. Hayatıma neşe, ruhuma huzur kattın. Bazen küçücük bir gülüşün, sesini duymak ya da gözlerine bakmak bile bütün günümü güzelleştirmeye yetiyor. Seninle yaşadığım her duyguyu, hissettiğim her şeyi, bana yaşattığın her heyecanı ayrı ayrı seviyorum. Çünkü senin yanındayken en sıradan anlar bile benim için çok özel oluyor. Sen bana yalnızca sevmeyi değil, sevildiğinde insanın nasıl güzelleştiğini de hissettirdin. Seninle birlikte kalbim, uzun zamandır aradığı huzuru buldu.",
+        "Seninle anladım ki mutluluk, her şeyin kusursuz olması değil; hayatın bütün güzelliklerini ve zorluklarını senin gibi biriyle karşılayabilmekmiş. Ben seninle sadece güzel günleri değil, hayatın her hâlini paylaşmak istiyorum. Sen benim en güzel baharım, bu hayatta başıma gelen en güzel şey oldun. İyi ki varsın balım, iyi ki hayatıma girdin, iyi ki kalbim seni bulmuş.",
+        "Bugün senin doğum günün hayatım. İyi ki doğmuşsun, iyi ki bu dünyaya gelmişsin ve iyi ki bir gün yollarımız kesişmiş. Bazen düşünüyorum da, seninle tanışmamış olsaydım hayatımda ne kadar güzel şeylerden mahrum kalacağımı bilmiyorum. Bana yaşattığın her mutluluk, hissettiğin her güzel duygu bitmeyen bir sevgiyle hayatıma kattığın her şey için sana minnettarım. Seni kelimelerle anlatabileceğimden çok daha fazla seviyorum. Yeni yaşında yüzünün hep gülmesini, kalbinin hiç kırılmamasını ve dilediğin bütün güzelliklerin seni bulmasını istiyorum. Ben de elimden geldiğince bu güzelliklerin bir parçası olmak, her yeni yaşında yanında olmak istiyorum. Nice güzel yaşlarına sevgilim. İyi ki doğdun, iyi ki benim hayatıma girdin."
+    ];
 
-    function kutuyuAcAç(kutuId, hedefEkranId) {
-        const kutuResmi = document.getElementById(kutuId);
-        kutuResmi.setAttribute("src", "resimler/kacik.png");
-
-        setTimeout(function() {
-            document.querySelectorAll('.ekran').forEach(ekran => {
-                ekran.classList.remove('aktif');
+    document.addEventListener("DOMContentLoaded", function() {
+        const alan = document.getElementById("dinamikMektupAlani");
+        if(alan) {
+            mektupMetni.forEach(paragraf => {
+                const p = document.createElement("p");
+                p.innerText = paragraf;
+                alan.appendChild(p);
             });
-            document.getElementById(hedefEkranId).classList.add('aktif');
+        }
+    });
+
+    function kutuAc(kutuId, hedefEkranId) {
+        const img = document.getElementById(kutuId);
+        if (img) img.setAttribute("src", "resimler/kacik.png");
+        setTimeout(function() {
+            document.querySelectorAll('.ekran').forEach(e => e.classList.remove('aktif'));
+            const hedef = document.getElementById(hedefEkranId);
+            if (hedef)  hedef.classList.add('aktif');
         }, 700);
     }
 
     function anaSayfayaDon() {
-        const k1 = document.getElementById("kutu1");
-        const k2 = document.getElementById("kutu2");
-        const k3 = document.getElementById("kutu3");
-        
-        if (k1) k1.setAttribute("src", "resimler/kkapali.png");
-        if (k2) k2.setAttribute("src", "resimler/kkapali.png");
-        if (k3) k3.setAttribute("src", "resimler/kkapali.png");
-
-        document.querySelectorAll('.ekran').forEach(ekran => {
-            ekran.classList.remove('aktif');
+        ["kutu1", "kutu2", "kutu3"].forEach(id => {
+            const img = document.getElementById(id);
+            if (img) img.setAttribute("src", "resimler/kkapali.png");
         });
+        document.querySelectorAll('.ekran').forEach(e => e.classList.remove('aktif'));
         document.getElementById('ekranAnaSayfa').classList.add('aktif');
     }
-</script>
 
+
+    function kutuAc(kutuId, hedefEkranId) {
+    const img = document.getElementById(kutuId);
+    if (img) img.setAttribute("src", "resimler/kacik.png");
+    setTimeout(function() {
+        // Eğer 2. kutu açılıyorsa body'e uzay-modu sınıfını ekle
+        if(hedefEkranId === 'ekranMuzik') {
+            document.body.classList.add('uzay-modu');
+        }
+        document.querySelectorAll('.ekran').forEach(e => e.classList.remove('aktif'));
+        const hedef = document.getElementById(hedefEkranId);
+        if (hedef) hedef.classList.add('aktif');
+    }, 700);
+}
+function anaSayfayaDon() {
+    // Geri dönerken uzay modunu kapatıp çiçekleri geri getirir
+    document.body.classList.remove('uzay-modu');
+
+    ["kutu1", "kutu2", "kutu3"].forEach(id => {
+        const img = document.getElementById(id); if (img) img.setAttribute("src", "resimler/kkapali.png");
+    });
+    document.querySelectorAll('.ekran').forEach(e => e.classList.remove('aktif'));
+    document.getElementById('ekranAnaSayfa').classList.add('aktif');
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const alan = document.getElementById("dinamikMektupAlani");
+    if(alan) {
+        mektupMetni.forEach(paragraf => {
+            const p = document.createElement("p"); p.innerText = paragraf; alan.appendChild(p);
+        });
+    }
+
+    // 🎯 TÜM EKRANA DAĞILACAK 35 TANE GİZLİ DİNAMİK YILDIZ OLUŞTURUR
+    for (let i = 0; i < 35; i++) {
+        const star = document.createElement("div");
+        star.classList.add("dinamik-yildiz");
+        star.style.top = Math.random() * 100 + "vh";
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.animationDelay = Math.random() * 2 + "s";
+        const size = Math.random() * 3 + 2;
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+        document.body.appendChild(star);
+    }
+});
+function kutuAc(kutuId, hedefEkranId) {
+    const img = document.getElementById(kutuId);
+    if (img) img.setAttribute("src", "resimler/kacik.png");
+    setTimeout(function() {
+        if(hedefEkranId === 'ekranMuzik') {
+            document.body.classList.add('uzay-modu');
+            // 🎯 2. kutu açıldığında tüm arka plan uzay yıldızlarını görünür yapar
+            document.querySelectorAll('.dinamik-yildiz').forEach(s => s.style.opacity = "1");
+        }
+        document.querySelectorAll('.ekran').forEach(e => e.classList.remove('aktif'));
+        const hedef = document.getElementById(hedefEkranId);
+        if (hedef) hedef.classList.add('aktif');
+    }, 700);
+}
+function anaSayfayaDon() {
+    document.body.classList.remove('uzay-modu');
+    // 🎯 Ana sayfaya dönerken uzay yıldızlarını tamamen gizler
+    document.querySelectorAll('.dinamik-yildiz').forEach(s => s.style.opacity = "0");
+
+    ["kutu1", "kutu2", "kutu3"].forEach(id => {
+        const img = document.getElementById(id); if (img) img.setAttribute("src", "resimler/kkapali.png");
+    });
+    document.querySelectorAll('.ekran').forEach(e => e.classList.remove('aktif'));
+    document.getElementById('ekranAnaSayfa').classList.add('aktif');
+}
+
+</script>
 </body>
 </html>
