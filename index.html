@@ -234,28 +234,35 @@ body.uzay-modu .sticker {
 </div>
 
 
-
-
-
-
-
-    <!-- EKRAN 3 -->
+<!-- EKRAN 3: DOĞUM GÜNÜ MEKTUBU -->
     <div class="ekran" id="ekranMektup">
+    
+        
         <div class="cicekli-mektup-karti">
-            <div class="mektup-yazi-alani" id="dinamikMektupAlani"></div>
-            <span class="mektup-kapanis">Seni çok seviyorum. ❤️</span>
+            <div class="mektup-yazi-alani">
+                <p>
+                    Bir bahar günü girdin hayatıma sevgilim. Sanki kalbimde hep sana ayrılmış bir yer varmış da sen yalnızca oraya dönmüşsün gibi, hiç yabancılık çekmeden yerleştin kalbimin tam ortasına. O güzel gülümsemenle buz tutmuş yanlarımı ısıttın. Sen kalbime yalnızca baharı getirmedin güzelim, sen baharın ta kendisiydin. Seninle içimde çiçekler açtı, yeniden filizlendim. İyi ki geldin hayatıma, iyi ki seni tanımışım.
+                </p>
+                <p>
+                    Sen hayatıma girdikten sonra yalnızca kalbim değil, dünyaya bakışım da değişti. Hayatıma neşe, ruhuma huzur kattın. Bazen küçücük bir gülüşün, sesini duymak ya da gözlerine bakmak bile bütün günümü güzelleştirmeye yetiyor. Seninle yaşadığım her duyguyu, hissettiğim her şeyi, bana yaşattığın her heyecanı ayrı ayrı seviyorum. Çünkü senin yanındayken en sıradan anlar bile benim için çok özel oluyor. Sen bana yalnızca sevmeyi değil, sevildiğinde insanın nasıl güzelleştiğini de hissettirdin. Seninle birlikte kalbim, uzun zamandır aradığı huzuru buldu.
+                </p>
+                <p>
+                    Seninle anladım ki mutluluk, her şeyin kusursuz olması değil; hayatın bütün güzelliklerini ve zorluklarını senin gibi biriyle karşılayabilmekmiş. Ben seninle sadece güzel günleri değil, hayatın her hâlini paylaşmak istiyorum. Sen benim en güzel baharım, bu hayatta başıma gelen en güzel şey oldun. İyi ki varsın balım, iyi ki hayatıma girdin, iyi ki kalbim seni bulmuş.
+                </p>
+                <p>
+                    Seninle geçirdiğim her an, bana hayatın ne kadar değerli olduğunu hatırlatıyor. Seninle birlikteyken zamanın nasıl geçtiğini anlamıyorum bile. Seninle yaşadığım her anı, her gülüşünü, her bakışını özenle saklıyorum kalbimde. Sen benim en değerli hazinemsin, sevgilim. İyi ki doğdun ve iyi ki benimlesin.Bugün senin doğum günün hayatım. İyi ki doğmuşsun, iyi ki bu dünyaya gelmişsin ve iyi ki bir gün yollarımız kesişmiş. Bazen düşünüyorum da, seninle tanışmamış olsaydım hayatımda ne kadar güzel şeylerden mahrum kalacağımı bilmiyorum. Bana yaşattığın her mutluluk, hissettirdiğin her güzel duygu ve hayatıma kattığın her şey için sana minnettarım. Seni kelimelerle anlatabileceğimden çok daha fazla seviyorum. Yeni yaşında yüzünün hep gülmesini, kalbinin hiç kırılmamasını ve dilediğin bütün güzelliklerin seni bulmasını istiyorum. Ben de elimden geldiğince bu güzelliklerin bir parçası olmak, her yeni yaşında yanında olmak istiyorum. Nice güzel yaşlarına sevgilim. İyi ki doğdun, iyi ki benim hayatıma girdin. Seni çok seviyorum.
+                </p>
+                <span class="mektup-kapanis">
+                    İyi ki Doğdun Swillim ❤️
+                </span>
+            </div>
         </div>
-        <button class="geri-btn" onclick="anaSayfayaDon()">↩ Geri Dön</button>
+
+        <button class="geri-btn" onclick="anaSayfayaDon()">↩ Kutulara Geri Dön</button>
     </div>
-</div>
 
 <script>
-    const mektupMetni = [
-        "Bir bahar günü girdin hayatıma sevgilim. Sanki kalbimde hep sana ayrılmış bir yer varmış da sen yalnızca oraya dönmüşsün gibi, hiç yabancılık çekmeden yerleştin kalbimin tam ortasına. O güzel gülümsemenle buz tutmuş yanlarımı ısıttın. Sen kalbime yalnızca baharı getirmedin güzelim, sen baharın ta kendisiydin. Seninle içimde çiçekler açtı, yeniden filizlendim. İyi ki geldin hayatıma, iyi ki seni tanımışım.",
-        "Sen hayatıma girdikten sonra yalnızca kalbim değil, dünyaya bakışım da değişti. Hayatıma neşe, ruhuma huzur kattın. Bazen küçücük bir gülüşün, sesini duymak ya da gözlerine bakmak bile bütün günümü güzelleştirmeye yetiyor. Seninle yaşadığım her duyguyu, hissettiğim her şeyi, bana yaşattığın her heyecanı ayrı ayrı seviyorum. Çünkü senin yanındayken en sıradan anlar bile benim için çok özel oluyor. Sen bana yalnızca sevmeyi değil, sevildiğinde insanın nasıl güzelleştiğini de hissettirdin. Seninle birlikte kalbim, uzun zamandır aradığı huzuru buldu.",
-        "Seninle anladım ki mutluluk, her şeyin kusursuz olması değil; hayatın bütün güzelliklerini ve zorluklarını senin gibi biriyle karşılayabilmekmiş. Ben seninle sadece güzel günleri değil, hayatın her hâlini paylaşmak istiyorum. Sen benim en güzel baharım, bu hayatta başıma gelen en güzel şey oldun. İyi ki varsın balım, iyi ki hayatıma girdin, iyi ki kalbim seni bulmuş.",
-        "Bugün senin doğum günün hayatım. İyi ki doğmuşsun, iyi ki bu dünyaya gelmişsin ve iyi ki bir gün yollarımız kesişmiş. Bazen düşünüyorum da, seninle tanışmamış olsaydım hayatımda ne kadar güzel şeylerden mahrum kalacağımı bilmiyorum. Bana yaşattığın her mutluluk, hissettiğin her güzel duygu bitmeyen bir sevgiyle hayatıma kattığın her şey için sana minnettarım. Seni kelimelerle anlatabileceğimden çok daha fazla seviyorum. Yeni yaşında yüzünün hep gülmesini, kalbinin hiç kırılmamasını ve dilediğin bütün güzelliklerin seni bulmasını istiyorum. Ben de elimden geldiğince bu güzelliklerin bir parçası olmak, her yeni yaşında yanında olmak istiyorum. Nice güzel yaşlarına sevgilim. İyi ki doğdun, iyi ki benim hayatıma girdin."
-    ];
+    
 
     document.addEventListener("DOMContentLoaded", function() {
         const alan = document.getElementById("dinamikMektupAlani");
